@@ -19,36 +19,7 @@
 </head>
 <body>
 
-<header>
-    <div class="header container">
-        <div class="companyName">
-            <div>
-                <a href="index.php">
-                    <img class="companyImage" src="./Resources/img/furniture.png" alt="logo">
-                </a>
-            </div>
-            <div>
-                <div class="title">Interior<span class="accent">.</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="header__links">
-            <div class="header__link index">
-                <a href="index.php">Главная</a>
-            </div>
-            <div class="header__link news">
-                <a href="news.php">Блог</a>
-            </div>
-            <div class="header__link prices">
-                <a href="prices.php">Каталог</a>
-            </div>
-            <div class="header__link contacts">
-                <a href="contacts.php">Контакты</a>
-            </div>
-        </div>
-    </div>
-</header>
+<?php require_once 'header.php';?>
 
 <main>
 
@@ -112,28 +83,35 @@
     </section>
 
 
-    <section class="section__3" style="background-image: url('/Resources/img/content/bgc2.webp')">
-        <div class="professionals container">
-            <div class="professionals__textBox">
-                <div class="professionals__preText">
-                    OUR PROFESSIONAL SERVICES
+    <section class="section__3">
+        <div class="section__bgimage" style="background-image: url('/Resources/img/content/bgc2.webp')"></div>
+        <div class="professionals__wrapper">
+            <div class="professionals">
+                <div class="professionals__textBox">
+                    <div class="professionals__preText title-preText">
+                        OUR PROFESSIONAL SERVICES
+                    </div>
+                    <div class="professionals__title title-header">
+                        <h2>We Will Create Modern And First Class Intorior<span class="accent">.</span></h2>
+                    </div>
+                    <div class="professionals__description">
+                        <p>
+                            Aorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
+                        </p>
+                    </div>
                 </div>
-                <div class="professionals__title">
-                    <h2>We Will Create Modern And First Class Intorior<span class="accent">.</span></h2>
-                </div>
-                <div class="professionals__description">
-                    <p>
-                        Aorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.
-                    </p>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
-                    </p>
-                </div>
-            </div>
-            <div class="professionals__more">
-                <a href="news.php">DISCOVER MORE ABOUT US</a>
+                <a href="news.php" class="professionals__more">
+                    DISCOVER MORE ABOUT US
+                </a>
             </div>
         </div>
+    </section>
+
+    <section class="section__4">
+
     </section>
 </main>
 
