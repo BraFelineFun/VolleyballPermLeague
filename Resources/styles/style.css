@@ -3,6 +3,7 @@
     --cl_bgc: #121418;
     --cl_accent: #FF1313;
     --cl_textPrimary: #222222;
+    --cl_textSecondary: #7E7E7E;
     --cl_textLight: #fff;
 
 }
@@ -16,58 +17,25 @@ body{
     margin: 0 auto;
     max-width: 1440px;
 }
-header{
-    position: fixed;
-    z-index: 100;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 20px 20px;
-}
-.header{
-    display: flex;
-}
 .accent{
     color: var(--cl_accent);
 }
-.title{
-    font-weight: bold;
+.title-preText{
+    color: var(--cl_textSecondary);
+    font-weight: lighter;
+    font-size: 16px;
+}
+.title-header{
+    font-weight: bolder;
+    font-size: 40px;
+}
+.title2{
     font-size: 24px;
+    font-weight: bold;
 }
-.companyName{
-    display: flex;
-    flex-direction: column-reverse;
-    background-color: var(--cl_textLight);
-    border-radius: 15px;
-    padding: 15px;
-}
+/*COMMON STYLES END*/
 
-.companyName a{
-    display: flex;
-    justify-content: center;
-    align-content: center;
-}
-.companyName img{
-    transition: 0.3s;
-    width: 50px;
-}
 
-.header__links{
-    width: 70%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
-.header__link > a {
-    text-transform: uppercase;
-    transition: 0.2s;
-    color: var(--cl_textLight);
-}
-.header__link > a:hover{
-    color: var(--cl_accent);
-}
 .section__1{
     position: relative;
     height: 100vh;
@@ -173,7 +141,7 @@ header{
 }
 .section__bgimage{
     background-size: cover;
-    background-position: center;
+    background-position: center center;
     min-height: 80vh;
 }
 .professionals__wrapper{
@@ -191,14 +159,7 @@ header{
     padding: 6vw;
     background-color: var(--cl_textLight);
 }
-.title-preText{
-    font-weight: lighter;
-    font-size: 16px;
-}
-.title-header{
-    font-weight: bolder;
-    font-size: 40px;
-}
+
 .professionals__preText{
     color: var(--cl_bgc);
 }
@@ -230,4 +191,111 @@ header{
 
 .section__4{
     height: 50vh;
+    padding: 150px 0;
+}
+
+.sectionTitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.sectionTitle .title-header{
+    color: var(--cl_textLight);
+    padding-top: 20px;
+}
+
+.section__4 .cards{
+    margin-top: 50px;
+}
+.cards{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.card{
+    height: 500px;
+    width: 400px;
+    margin: 15px 15px;
+    display: flex;
+    align-items: end;
+
+    background-size: cover;
+    background-position: center center;
+}
+.card__label{
+    height: 75px;
+    width: 100%;
+    /*margin-top: auto;*/
+    padding: 20px 20px 20px 70px;
+
+    background-color: var(--cl_textLight);
+}
+.card__title{
+    position: relative;
+}
+.card__title:before{
+    position: absolute;
+    top: 50%;
+    left:  -50px;
+    content: "";
+    width: 40px;
+    height: 2px;
+    background-color: var(--cl_accent);
+}
+
+.card__label{
+    transition: 0.5s;
+}
+.card__text p + p{
+    margin-top: -1em;
+}
+.card__text p:not(:first-child){
+    opacity: 0;
+}
+
+
+@media (min-width: 861px) {
+    /*На устр с разрешением больше 861px слушаем hover*/
+
+    .card:hover .card__text p:not(:first-child){
+        opacity: 1;
+    }
+    .card:hover .card__label{
+        height: 125px;
+    }
+    .card:hover .card__label{
+        background-color: var(--cl_accent);
+        color: var(--cl_textLight);
+    }
+    .card:hover .card__title:before{
+        background-color: var(--cl_textLight);
+    }
+}
+@media (max-width: 860px) {
+    /*На устр с разрешением меньше 860px слушаем кастомный класс*/
+    .card{
+        max-width: 400px;
+    }
+    .hovered .card__text p:not(:first-child){
+        opacity: 1;
+    }
+    .hovered .card__label{
+        height: 125px;
+    }
+    .hovered .card__label{
+        background-color: var(--cl_accent);
+        color: var(--cl_textLight);
+    }
+    .hovered .card__title:before{
+        background-color: var(--cl_textLight);
+    }
+
+}
+
+@media (max-width: 576px) {
+    .title-header{
+        font-size: 24px;
+    }
+
 }

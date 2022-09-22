@@ -8,18 +8,21 @@
 
     <link rel="stylesheet" href="./Resources/styles/style.css">
     <link rel="stylesheet" href="./Resources/styles/normalize.css">
+    <link rel="stylesheet" href="Resources/styles/headerStyle.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
 
-    <script defer src="Resources/js/reduceHeader.js"></script>
+    <script defer src="Resources/js/index.js"></script>
 
     <title>Interior.</title>
 </head>
 <body>
 
-<?php require_once 'header.php';?>
+<?php
+require_once 'header.php';
+?>
 
 <main>
 
@@ -111,7 +114,39 @@
     </section>
 
     <section class="section__4">
-
+        <div class="sectionTitle">
+            <div class="title-preText">OUR PROFESSIONAL SERVICES</div>
+            <div class="sectionTitle title-header">Best Interitor Services</div>
+        </div>
+        <div class="cards container">
+            <div class="card" style="background-image: url('./Resources/img/content/narrowC1.webp')">
+                <div class="card__label">
+                    <div class="card__title title2">Lightning</div>
+                    <div class="card__text">
+                        <p>For each project we establish</p>
+                        <p>relationships with partners who we know will help us.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="background-image: url('./Resources/img/content/narrowC2.webp')">
+                <div class="card__label">
+                    <div class="card__title title2">Interior Design</div>
+                    <div class="card__text">
+                        <p>For each project we establish</p>
+                        <p>relationships with partners who we know will help us.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="background-image: url('./Resources/img/content/narrowC3.webp')">
+                <div class="card__label">
+                    <div class="card__title title2">Office Decoration</div>
+                    <div class="card__text">
+                        <p>For each project we establish</p>
+                        <p>relationships with partners who we know will help us.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 </main>
 
