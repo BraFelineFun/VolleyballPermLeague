@@ -1,0 +1,85 @@
+/*
+======== CONTACTS ========
+*/
+.mapBox{
+    position: relative;
+    margin-bottom: 10vh;
+}
+.mapBox__wrapper{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mapBox__button{
+    width: 300px;
+    height: 75px;
+}
+.mapBox__button > input{
+    background-color: transparent;
+}
+.mapBox > iframe{
+    visibility: hidden;
+}
+.showed .mapBox__wrapper{
+    display: none;
+}
+.showed iframe{
+    visibility: visible;
+}
+
+.contact__wrapper{
+    background-color: var(--cl_textLight);
+}
+.contact{
+    padding: 10vh 5vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.--contactProportion1{
+    flex-basis: 60%;
+}
+
+.row{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.row + .row, .row__submit{
+    margin-top: 30px;
+}
+.row input + input{
+    margin-left: 30px;
+}
+.contact__data{
+    width: 300px;
+}
+
+
+.contact__data .contacts__phone a, .contact__data .contacts__email a, .contact__data .location__fullAddress{
+    color: var(--cl_bgcDarker);
+}
+.contact__icon > img{
+    width: 50px;
+}
+.contact__info{
+    width: 235px;
+}
+
+@media screen and (max-width: 1000px) {
+    .contact{
+        flex-direction: column-reverse;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .contact__form{
+        width: 100%;
+        margin-top: 50px;
+    }
+}

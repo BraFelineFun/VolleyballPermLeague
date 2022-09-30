@@ -71,12 +71,26 @@ function reduceHeader(selector){
         }
 
     })
-};
+}
 
+function delayedMapShow(){
+    try {
+        const mapBox = document.querySelector(".mapBox");
+        const button = document.querySelector('.mapBox input[type="button"]');
+
+        button.addEventListener('click', () => {
+            mapBox.classList.toggle('showed');
+        })
+    }
+    catch (e){
+        console.log("На странице отсутствует карта " + e);
+    }
+}
 
 
 document.addEventListener("DOMContentLoaded", function(event) {
     reduceHeader(".companyImage");
+    delayedMapShow();
 
     const setFocusHandler = setFocus('.cards');
     setFocusHandler();
@@ -84,5 +98,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     const burger = document.querySelector('.burger__iconContainer');
     burger.addEventListener('click', burgerToggle);
+
 });
 

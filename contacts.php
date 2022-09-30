@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="./Resources/styles/style.css">
     <link rel="stylesheet" href="./Resources/styles/normalize.css">
     <link rel="stylesheet" href="./Resources/styles/headerStyle.css">
+    <link rel="stylesheet" href="./Resources/styles/footer.css">
+
+    <link rel="stylesheet" href="./Resources/styles/pages/contacts.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,10 +24,89 @@
 <body>
 
 <?php
-require_once 'header.php';
+require_once 'UI/header.php';
 ?>
 
 
+<main>
+
+    <div class="mapBox  container underHeaderPlaceholder">
+        <div class="mapBox__wrapper">
+            <div class="mapBox__button">
+                <input type="button" value="Показать карту">
+            </div>
+        </div>
+        <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A1dad0bd80ae85236edc93cdaa3480ff6e2272691b621e97fa485b0e41afafaf9&amp;source=constructor" width="100%" height="400" frameborder="0">
+
+        </iframe>
+    </div>
+
+    <div class="contact__wrapper">
+
+        <div class="contact container">
+
+            <div class="contact__form --contactProportion1">
+                <div class="row">
+                    <textarea name="Message" placeholder="Enter your message" cols="30" rows="10"></textarea>
+                </div>
+                <div class="row">
+                    <input type="text" placeholder="Enter your name">
+                    <input type="text" placeholder="Enter email address">
+                </div>
+                <div class="row">
+                    <input type="text" placeholder="Enter Subject">
+                </div>
+
+                <div class="row__submit">
+                    <input type="submit" value="SEND">
+                </div>
+
+            </div>
+            <div class="contact__data --contactProportion2">
+                <div class="row">
+                    <div class="contact__icon">
+                        <img src="./Resources/img/Contacts/chat.png" alt="Contacts">
+                    </div>
+                    <div class="contact__info">
+                        <div class="contacts__phone">
+                            <a href="tel:+56478853222">
+                                +564 <span class="accent">7885 3222</span>
+                            </a>
+                        </div>
+                        <div class="contacts__email">
+                            <a href="mailto:interior@design.com?subject=Interior">interior@design.com</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="contact__icon">
+                        <img src="./Resources/img/Contacts/location.png" alt="Location">
+                    </div>
+                    <div class="contact__info">
+                        <div class="location__address">
+                            <div class="location__city accent">
+                                New York
+                            </div>
+                            <div class="location__fullAddress title-preText">
+                                123 East 26th Street, Fifth Floor, New York, NY 10011
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</main>
+
+
+<?php
+require_once "./UI/footer.php";
+?>
 
 </body>
 </html>

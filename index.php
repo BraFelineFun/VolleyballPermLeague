@@ -8,7 +8,8 @@
 
     <link rel="stylesheet" href="./Resources/styles/style.css">
     <link rel="stylesheet" href="./Resources/styles/normalize.css">
-    <link rel="stylesheet" href="Resources/styles/headerStyle.css">
+    <link rel="stylesheet" href="./Resources/styles/headerStyle.css">
+    <link rel="stylesheet" href="./Resources/styles/footer.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +22,7 @@
 <body>
 
 <?php
-require_once 'header.php';
+require_once 'UI/header.php';
 ?>
 
 <main>
@@ -151,9 +152,9 @@ require_once 'header.php';
 </main>
 
 
-<footer>
-
-</footer>
+<?php
+require_once "./UI/footer.php";
+?>
 
 </body>
 </html>

@@ -1,0 +1,33 @@
+footer{
+    min-height: 40vh;
+    background-color: var(--cl_bgc);
+    color: var(--cl_textLight);
+}
+
+.footerBox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10vh 0 5vh;
+    padding: 0 20px;
+}
+.footer__item{
+    max-width: 300px;
+}
+.footer__item > div {
+    margin-bottom: 40px;
+}
+.footer__mainContacts > .contacts__phone{
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 1000px) {
+    .footerBox{
+        flex-direction: column;
+        justify-content: center;
+
+    }
+    .footer__item{
+        margin-top: 30px;
+    }
+}

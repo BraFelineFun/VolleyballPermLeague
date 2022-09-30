@@ -1,12 +1,49 @@
 :root{
 
     --cl_bgc: #121418;
+    --cl_bgcDarker:  #0c0f16;
     --cl_accent: #FF1313;
     --cl_textPrimary: #222222;
-    --cl_textSecondary: #7E7E7E;
+    --cl_textSecondary: #929294;
     --cl_textLight: #fff;
 
+
+    --header-height: 140px;
 }
+div {
+    box-sizing: border-box;
+}
+/* UI KIT */
+textarea, input{
+    padding: 10px 10px 10px 20px;
+    width: 100%;
+
+    border: 1px solid var(--cl_textSecondary);
+    color: var(--cl_textPrimary);
+    font-size: 20px;
+    background-color: var(--cl_textLight);
+}
+textarea:focus, input:focus{
+    border: 1px solid var(--cl_accent);
+}
+textarea{
+    resize: none;
+}
+input[type="submit"], input[type="button"]{
+    cursor: pointer;
+    will-change: contents;
+    transition: 0.3s;
+    color: var(--cl_accent);
+    border: 1px solid var(--cl_accent);
+    text-transform: uppercase;
+}
+input[type="submit"]:hover, input[type="button"]:hover{
+    color: var(--cl_textLight);
+    background-color: var(--cl_accent);
+    font-weight: bold;
+}
+/* UI KIT */
+
 
 body{
     position: relative;
@@ -32,6 +69,9 @@ body{
 .title2{
     font-size: 24px;
     font-weight: bold;
+}
+.underHeaderPlaceholder{
+    margin-top: calc(var(--header-height) + 5vh);
 }
 /*COMMON STYLES END*/
 
@@ -155,7 +195,7 @@ body{
     align-items: end;
 }
 .professionals__textBox{
-    max-width: 50%;
+    max-width: 65%;
     padding: 6vw;
     background-color: var(--cl_textLight);
 }
@@ -190,7 +230,8 @@ body{
 }
 
 .section__4{
-    height: 50vh;
+    background-color: var(--cl_bgcDarker);
+    min-height: 50vh;
     padding: 150px 0;
 }
 
@@ -219,6 +260,7 @@ body{
     margin: 15px 15px;
     display: flex;
     align-items: end;
+    overflow: hidden;
 
     background-size: cover;
     background-position: center center;
@@ -299,3 +341,40 @@ body{
     }
 
 }
+
+
+.contacts__phone{
+    font-size: 24px;
+}
+
+.socialsBlock{
+    border-left: 2px solid var(--cl_accent);
+    padding-left: 15px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.social{
+    margin-top: 15px;
+    width: 100%;
+    border-bottom: 1px solid var(--cl_textPrimary);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.social__text{
+    transition: 0.3s;
+    color: var(--cl_textSecondary);
+}
+.social:hover .social__text{
+    font-weight: bold;
+    color: var(--cl_accent);
+}
+.social__image > img{
+    width: 50px;
+}
+
+
+
