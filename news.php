@@ -19,29 +19,33 @@
 
     <title>Interior. Блог</title>
 </head>
-<body>
+<body pageName ='<?= basename($_SERVER["SCRIPT_FILENAME"], ".php") ?>'>
 
 <?php
 require_once 'UI/header.php';
 ?>
 
-<main>
-    <div class="section__title" style="background-image: url('/Resources/img/blog/BlogMain.webp')">
+<main class="mainBlog" >
+    <div class="section__BlogTitle filterHolder bgIpos" style="background-image: url('/Resources/img/blog/BlogMain.webp')">
         <div class="titleText title-header">
             BLOG
         </div>
+
+        <div class="section__filter">
+        </div>
     </div>
 
-    <div class="section__blogContent container">
+    <div class="section__blogContent containerNarrow">
         <div class="blog">
             <div class="blog__cards">
                 <div class="blog__card" >
-                    <div class="blog__cardImage" style="background-image: url('/Resources/img/blog/contentImages/blog1.webp')"></div>
+                    <div class="blog__cardImage bgIpos" style="background-image: url('/Resources/img/blog/contentImages/blog1.webp')"></div>
                     <div class="blog__cardBody">
                         <div class="blog__shortInfo">
                             <div class="blog__shortDate">
                                 30.09.2022
                             </div>
+                            <span class="divider"></span>
                             <div class="blog__shortCreator">
                                 Travis Scott
                             </div>
@@ -60,6 +64,92 @@ require_once 'UI/header.php';
                                 <p>
                                     MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower
                                 </p>
+                            </div>
+
+                            <div class="cardExpand">
+                                <div class="cardExpand__container">
+                                    <span class="circle"></span>
+                                    <span class="circle"></span>
+                                    <span class="circle"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="blog__card" >
+                    <div class="blog__cardImage bgIpos" style="background-image: url('/Resources/img/blog/contentImages/blog1.webp')"></div>
+                    <div class="blog__cardBody">
+                        <div class="blog__shortInfo">
+                            <div class="blog__shortDate">
+                                30.09.2022
+                            </div>
+                            <span class="divider"></span>
+                            <div class="blog__shortCreator">
+                                Travis Scott
+                            </div>
+                            <!--                ADD LIKES???                -->
+                        </div>
+
+                        <div class="blog__cardContent">
+                            <div class="blog__cardHeader title2">
+                                Second divided from form fish beast
+                            </div>
+
+                            <div class="blog__cardDescription">
+                                <p>
+                                    MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower
+                                </p>
+                                <p>
+                                    MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower
+                                </p>
+                            </div>
+
+                            <div class="cardExpand">
+                                <div class="cardExpand__container">
+                                    <span class="circle"></span>
+                                    <span class="circle"></span>
+                                    <span class="circle"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="blog__card" >
+                    <div class="blog__cardImage bgIpos" style="background-image: url('/Resources/img/blog/contentImages/blog1.webp')"></div>
+                    <div class="blog__cardBody">
+                        <div class="blog__shortInfo">
+                            <div class="blog__shortDate">
+                                30.09.2022
+                            </div>
+                            <span class="divider"></span>
+                            <div class="blog__shortCreator">
+                                Travis Scott
+                            </div>
+                            <!--                ADD LIKES???                -->
+                        </div>
+
+                        <div class="blog__cardContent">
+                            <div class="blog__cardHeader title2">
+                                Second divided from form fish beast
+                            </div>
+
+                            <div class="blog__cardDescription">
+                                <p>
+                                    MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower
+                                </p>
+                                <p>
+                                    MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower
+                                </p>
+                            </div>
+
+                            <div class="cardExpand">
+                                <div class="cardExpand__container">
+                                    <span class="circle"></span>
+                                    <span class="circle"></span>
+                                    <span class="circle"></span>
+                                </div>
                             </div>
                         </div>
 

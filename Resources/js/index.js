@@ -87,17 +87,52 @@ function delayedMapShow(){
     }
 }
 
+function cardExpansion(buttonSel, cardSel){
+    const buts = document.querySelectorAll(buttonSel);
+    const cards = document.querySelectorAll(cardSel);
 
+    if (!(buts && cards) || (buts.length !== cards.length)) return;
+
+    for(let i = 0; i < buts.length; i++){
+        const but = buts[i];
+        const card = cards[i];
+
+        but.addEventListener("click", () => {
+            card.classList.toggle('--expanded');
+        })
+    }
+}
+
+//Точка старта
 document.addEventListener("DOMContentLoaded", function(event) {
     reduceHeader(".companyImage");
-    delayedMapShow();
-
-    const setFocusHandler = setFocus('.cards');
-    setFocusHandler();
-    window.addEventListener('orientationchange', setFocusHandler)
-
     const burger = document.querySelector('.burger__iconContainer');
     burger.addEventListener('click', burgerToggle);
+
+    const body = document.querySelector('body');
+
+    switch (body.getAttribute('pageName')){
+        case 'news':{
+            const setFocusHandler = setFocus('.blog__cards');
+            setFocusHandler();
+            window.addEventListener('orientationchange', setFocusHandler);
+            cardExpansion(".cardExpand", ".blog__card");
+            break;
+        }
+
+        case 'contacts':
+            delayedMapShow();
+            break;
+
+        case 'index':{
+            const setFocusHandler = setFocus('.cards');
+            setFocusHandler();
+            window.addEventListener('orientationchange', setFocusHandler);
+            break;
+        }
+
+
+    }
 
 });
 

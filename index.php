@@ -19,7 +19,7 @@
 
     <title>Interior.</title>
 </head>
-<body>
+<body pageName ='<?= basename($_SERVER["SCRIPT_FILENAME"], ".php") ?>'>
 
 <?php
 require_once 'UI/header.php';
