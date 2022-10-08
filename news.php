@@ -17,7 +17,7 @@
 
     <script defer src="Resources/js/index.js"></script>
 
-    <title>Interior. Блог</title>
+    <title> Блог | Interior. </title>
 </head>
 <body pageName ='<?= basename($_SERVER["SCRIPT_FILENAME"], ".php") ?>'>
 
@@ -28,7 +28,7 @@ require_once 'UI/header.php';
 <main class="mainBlog" >
     <div class="section__BlogTitle filterHolder bgIpos" style="background-image: url('/Resources/img/blog/BlogMain.webp')">
         <div class="titleText title-header">
-            BLOG
+            Блог
         </div>
 
         <div class="section__filter">
@@ -47,22 +47,26 @@ require_once 'UI/header.php';
                             </div>
                             <span class="divider"></span>
                             <div class="blog__shortCreator">
-                                Travis Scott
+                                Тревис Скотт
                             </div>
 <!--                ADD LIKES???                -->
                         </div>
 
                         <div class="blog__cardContent">
                             <div class="blog__cardHeader title2">
-                                Second divided from form fish beast
+                                Дизайн в стиле Лофт
                             </div>
 
                             <div class="blog__cardDescription">
                                 <p>
-                                    MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower
+                                    Лофт — это стиль, который пришел к нам из индустриальных районов Америки и Европы.
+                                    Он не имеет четкого направления, но объединяет в себе несколько стилей.
                                 </p>
                                 <p>
-                                    MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower
+                                    Для него характерно использование больших пространств, большие окна, высокие потолки и свободные планировки.
+                                    В нем нет места для излишеств и вычурности.
+                                    Все просто, лаконично и функционально.
+                                    При этом, в нем есть место для неординарных решений и смелых экспериментов.
                                 </p>
                             </div>
 
@@ -82,26 +86,29 @@ require_once 'UI/header.php';
                     <div class="blog__cardBody">
                         <div class="blog__shortInfo">
                             <div class="blog__shortDate">
-                                30.09.2022
+                                29.09.2022
                             </div>
                             <span class="divider"></span>
                             <div class="blog__shortCreator">
-                                Travis Scott
+                                Дрэйк
                             </div>
                             <!--                ADD LIKES???                -->
                         </div>
 
                         <div class="blog__cardContent">
                             <div class="blog__cardHeader title2">
-                                Second divided from form fish beast
+                                Интерьер ванной комнаты
                             </div>
 
                             <div class="blog__cardDescription">
                                 <p>
-                                    MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower
+                                    Интерьер ванной комнаты
+                                    Ванная комната – это место, где мы можем расслабиться, отдохнуть, привести себя в порядок.
+                                    В ней всегда должно быть чисто и уютно.
                                 </p>
                                 <p>
-                                    MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower
+                                    Дизайн ванной комнаты должен быть интересным и необычным, чтобы он привлекал внимание и вдохновлял на новые идеи.
+                                    Давайте рассмотрим, как можно оформить это помещение, какие стили выбрать, что необходимо сделать, чтобы ванная выглядела красиво и стильно.
                                 </p>
                             </div>
 
@@ -121,26 +128,26 @@ require_once 'UI/header.php';
                     <div class="blog__cardBody">
                         <div class="blog__shortInfo">
                             <div class="blog__shortDate">
-                                30.09.2022
+                                27.09.2022
                             </div>
                             <span class="divider"></span>
                             <div class="blog__shortCreator">
-                                Travis Scott
+                                Тайлер Дерден
                             </div>
                             <!--                ADD LIKES???                -->
                         </div>
 
                         <div class="blog__cardContent">
                             <div class="blog__cardHeader title2">
-                                Second divided from form fish beast
+                                Интерьеры подвальных помещений
                             </div>
 
                             <div class="blog__cardDescription">
                                 <p>
-                                    MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower
+                                    В подвале можно сделать комнату, в которой будет только диван и телевизор, или комнату с диваном и телевизором, или с диваном, телевизором и еще с кроватью, и еще со столиком, и со стулом, и с креслом. Главное, чтобы было тепло.
                                 </p>
                                 <p>
-                                    MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower
+                                    Покрасить все в белый цвет. Подвесить повсюду люстры, поставить диваны, повесить телевизор, стол, стулья, купить шторы. Зайти в соседний магазин за продуктами и купить там все, что нужно.
                                 </p>
                             </div>
 
@@ -160,8 +167,8 @@ require_once 'UI/header.php';
 
             <div class="blog__filters">
                 <div class="blog__searchBlock">
-                    <input type="text" placeholder="Search for">
-                    <input type="button" value="SEARCH">
+                    <input type="text" placeholder="Искать ...">
+                    <input type="button" value="Поиск">
                 </div>
             </div>
         </div>

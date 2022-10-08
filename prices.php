@@ -17,7 +17,7 @@
 
     <script defer src="Resources/js/index.js"></script>
 
-    <title>Interior. Каталог</title>
+    <title>Каталог | Interior. </title>
 </head>
 <body pageName ='<?= basename($_SERVER["SCRIPT_FILENAME"], ".php") ?>'>
 
@@ -28,30 +28,38 @@ require_once 'UI/header.php';
 <main class="mainBlog" >
     <div class="section__pricesTitle filterHolder bgIpos" style="background-image: url('/Resources/img/blog/BlogMain.webp')">
         <div class="titleText title-header">
-            PRICES LIST
+            Каталог услуг
         </div>
 
         <div class="section__filter"></div>
     </div>
 
-    <div class="containerNarrow">
+    <div class="prices containerNarrow">
 
-        <table>
+        <table class="prices__table">
             <tr>
-                <td>Описание</td>
-                <td>Цена</td>
+                <th class="title2">Описание</th>
+                <th class="title2">Цена (₽)</th>
             </tr>
-            <tr>
-                <td>услуга1</td>
-                <td>1000</td>
+            <tr class="prices__row">
+                <td>Дизайн кухни</td>
+                <td>10000</td>
             </tr>
-            <tr>
-                <td>услуга2</td>
-                <td>2000</td>
+            <tr class="prices__row">
+                <td>Дизайн гостинной</td>
+                <td>15000</td>
             </tr>
-            <tr>
-                <td>услуга3</td>
-                <td>3000</td>
+            <tr class="prices__row">
+                <td>Дизайн веранды</td>
+                <td>5000</td>
+            </tr>
+            <tr class="prices__row">
+                <td>Проектирование интерьера спальни</td>
+                <td>50000</td>
+            </tr>
+            <tr class="prices__row">
+                <td>Проектирование Дома / Квартиры</td>
+                <td>150000</td>
             </tr>
 
         </table>

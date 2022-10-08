@@ -19,7 +19,7 @@
 
     <script defer src="Resources/js/index.js"></script>
 
-    <title>Interior. Контакты</title>
+    <title> Контакты | Interior. </title>
 </head>
 <body pageName ='<?= basename($_SERVER["SCRIPT_FILENAME"], ".php") ?>'>
 
@@ -47,18 +47,18 @@ require_once 'UI/header.php';
 
             <div class="contact__form --contactProportion1">
                 <div class="row">
-                    <textarea name="Message" placeholder="Enter your message" cols="30" rows="10"></textarea>
+                    <textarea name="Message" placeholder="Ваше сообщение" cols="30" rows="10"></textarea>
                 </div>
                 <div class="row">
-                    <input type="text" placeholder="Enter your name">
-                    <input type="text" placeholder="Enter email address">
+                    <input type="text" placeholder="Ваше имя">
+                    <input type="text" placeholder="Ваш email адрес">
                 </div>
                 <div class="row">
-                    <input type="text" placeholder="Enter Subject">
+                    <input type="text" placeholder="Тема">
                 </div>
 
                 <div class="row__submit">
-                    <input type="submit" value="SEND">
+                    <input type="submit" value="Отправить">
                 </div>
 
             </div>
@@ -70,7 +70,7 @@ require_once 'UI/header.php';
                     <div class="contact__info">
                         <div class="contacts__phone">
                             <a href="tel:+56478853222">
-                                +564 <span class="accent">7885 3222</span>
+                                +7(800) <span class="accent">555 3 555</span>
                             </a>
                         </div>
                         <div class="contacts__email">
@@ -86,10 +86,10 @@ require_once 'UI/header.php';
                     <div class="contact__info">
                         <div class="location__address">
                             <div class="location__city accent">
-                                New York
+                                Пермь
                             </div>
                             <div class="location__fullAddress title-preText">
-                                123 East 26th Street, Fifth Floor, New York, NY 10011
+                                ул. Генкеля 7, Пермь, Россия
                             </div>
                         </div>
                     </div>

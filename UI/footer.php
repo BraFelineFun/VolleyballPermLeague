@@ -7,13 +7,13 @@
                 Interior<span class="accent">.</span>
             </div>
             <div class="footer__description title-preText">
-                Grabbing the consumer’s attention isn’t enough you have to keep that attention
+                Профессиональные услуги по созданию интерьеров любых помещений
             </div>
 
             <div class="footer__mainContacts">
                 <div class="contacts__phone">
                     <a href="tel:+56478853222">
-                        +564 <span class="accent">7885 3222</span>
+                        +7(800) <span class="accent">555 3 555</span>
                     </a>
                 </div>
                 <div class="contacts__email">
@@ -24,30 +24,22 @@
 
         <div class="footer__item footer__location">
             <div class="footer__title title-header">
-                Our Location
+                Наше расположение
             </div>
 
             <div class="location__address">
                 <div class="location__city accent">
-                    New York
+                    Пермь
                 </div>
                 <div class="location__fullAddress title-preText">
-                    123 East 26th Street, Fifth Floor, New York, NY 10011
+                    ул. Генкеля 7, Пермь, Россия
                 </div>
             </div>
 
-            <div class="location__address">
-                <div class="location__city accent">
-                    Japan
-                </div>
-                <div class="location__fullAddress title-preText">
-                    123 East 26th Street, Fifth Floor, New York, NY 10011
-                </div>
-            </div>
         </div>
         <div class="footer__item footer__location">
             <div class="footer__title title-header">
-                Find Us in Socials
+                Мы в социальных сетях
             </div>
 
             <div class="footer__social socialsBlock">
