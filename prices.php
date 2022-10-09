@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="./Resources/styles/normalize.css">
     <link rel="stylesheet" href="./Resources/styles/headerStyle.css">
     <link rel="stylesheet" href="./Resources/styles/footer.css">
+    <link rel="stylesheet" href="./Resources/styles/pages/prices.css">
+
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,33 +38,55 @@ require_once 'UI/header.php';
 
     <div class="prices containerNarrow">
 
+        <?php
+            require_once 'Helpers/DB.php';
+            require_once 'Helpers/table_sort.php';
+
+            $sortQuery = getSortQuery();
+
+            try {
+                $DB_arr = executeSQL("SELECT * from prices $sortQuery");
+            } catch (Exception $e) {
+                $DB_arr = [];
+            }
+        ?>
+
+
         <table class="prices__table">
             <tr>
-                <th class="title2">Описание</th>
-                <th class="title2">Цена (₽)</th>
-            </tr>
-            <tr class="prices__row">
-                <td>Дизайн кухни</td>
-                <td>10000</td>
-            </tr>
-            <tr class="prices__row">
-                <td>Дизайн гостинной</td>
-                <td>15000</td>
-            </tr>
-            <tr class="prices__row">
-                <td>Дизайн веранды</td>
-                <td>5000</td>
-            </tr>
-            <tr class="prices__row">
-                <td>Проектирование интерьера спальни</td>
-                <td>50000</td>
-            </tr>
-            <tr class="prices__row">
-                <td>Проектирование Дома / Квартиры</td>
-                <td>150000</td>
+                <th class="title2">
+                    <?= createLink('Описание', 'descript') ?>
+                </th>
+                <th class="title2">
+                    <?= createLink('Цена (₽)', 'value') ?>
+                </th>
             </tr>
 
+            <?php
+                foreach ($DB_arr as $row){
+
+                    $descr = $row['descript'];
+                    $price = $row['value'];
+
+
+                    echo '<tr class="prices__row">';
+                    echo "<td>$descr</td>";
+                    echo "<td>$price</td>";
+                    echo "</tr>";
+
+                }
+                if (count($DB_arr) < 1){
+                    echo '<tr class="prices__row">';
+                    echo "<td> Отсутствуют данные </td>";
+                    echo "</tr>";
+                }
+            ?>
+
         </table>
+
+        <div class="prices__hint">
+            <i>Нажмите на интересующее поле в заголовке таблицы для сортировки</i>
+        </div>
 
     </div>
 

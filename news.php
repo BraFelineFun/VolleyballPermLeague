@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./Resources/styles/normalize.css">
     <link rel="stylesheet" href="./Resources/styles/headerStyle.css">
     <link rel="stylesheet" href="./Resources/styles/footer.css">
+    <link rel="stylesheet" href="Resources/styles/pages/news.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,38 +36,71 @@ require_once 'UI/header.php';
         </div>
     </div>
 
+    <?php
+    //Создаем запрос к бд и выполняем
+    require_once 'Helpers/DB.php';
+    require_once 'Helpers/str_includes.php';
+
+    $query = "SELECT news.title, news.public_date,  news.body, news.catch_p, news.category_id, users.login
+    from news join users
+    on news.author_id = users.id";
+
+    try {
+        $DB_arr = executeSQL($query);
+    } catch (Exception $e) {
+        $DB_arr = [];
+    }
+
+    if (isset($_GET['queryFilter']) && $_GET['queryFilter'] !== ''){
+        //Проверяем наличие фильтра и выкидываем элементы, которые не подходят
+        $queryFilter = $_GET['queryFilter'];
+
+        $DB_arr = array_filter($DB_arr, function($row) use ($queryFilter) {
+            $lqueryFilter = mb_strtolower($queryFilter, 'UTF-8');
+
+            return
+                str_includes($row['title'], $lqueryFilter)
+                || str_includes($row['login'], $lqueryFilter)
+                || str_includes($row['body'], $lqueryFilter)
+                || str_includes($row['catch_p'], $lqueryFilter);
+        });
+    }
+
+    ?>
+
     <div class="section__blogContent containerNarrow">
         <div class="blog">
             <div class="blog__cards">
+                <?php foreach ($DB_arr as $row): ?>
                 <div class="blog__card" >
                     <div class="blog__cardImage bgIpos" style="background-image: url('/Resources/img/blog/contentImages/blog1.webp')"></div>
                     <div class="blog__cardBody">
                         <div class="blog__shortInfo">
                             <div class="blog__shortDate">
-                                30.09.2022
+                                <?= $row['public_date'] ?>
                             </div>
                             <span class="divider"></span>
                             <div class="blog__shortCreator">
-                                Тревис Скотт
+<!--                            Выводим автора    -->
+                                <?= $row['login'] ?>
                             </div>
-<!--                ADD LIKES???                -->
+<!--                            todo: add likes -->
                         </div>
 
                         <div class="blog__cardContent">
                             <div class="blog__cardHeader title2">
-                                Дизайн в стиле Лофт
+<!--                                Заголовок-->
+                                <?= $row['title'] ?>
                             </div>
 
                             <div class="blog__cardDescription">
+<!--                                выводим первый параграф (будет виден всегда)-->
                                 <p>
-                                    Лофт — это стиль, который пришел к нам из индустриальных районов Америки и Европы.
-                                    Он не имеет четкого направления, но объединяет в себе несколько стилей.
+                                    <?= $row['catch_p'] ?>
                                 </p>
                                 <p>
-                                    Для него характерно использование больших пространств, большие окна, высокие потолки и свободные планировки.
-                                    В нем нет места для излишеств и вычурности.
-                                    Все просто, лаконично и функционально.
-                                    При этом, в нем есть место для неординарных решений и смелых экспериментов.
+<!--                                и остальной текст (при раскрытии карточки)-->
+                                    <?= $row['body'] ?>
                                 </p>
                             </div>
 
@@ -81,95 +115,25 @@ require_once 'UI/header.php';
 
                     </div>
                 </div>
-                <div class="blog__card" >
-                    <div class="blog__cardImage bgIpos" style="background-image: url('/Resources/img/blog/contentImages/blog1.webp')"></div>
-                    <div class="blog__cardBody">
-                        <div class="blog__shortInfo">
-                            <div class="blog__shortDate">
-                                29.09.2022
-                            </div>
-                            <span class="divider"></span>
-                            <div class="blog__shortCreator">
-                                Дрэйк
-                            </div>
-                            <!--                ADD LIKES???                -->
-                        </div>
+                <?php endforeach;
+                if(!$DB_arr)
+                    echo '
+                        <div class="title2"> Ничего по запросу не найдено</div>
+                    ';
 
-                        <div class="blog__cardContent">
-                            <div class="blog__cardHeader title2">
-                                Интерьер ванной комнаты
-                            </div>
+                ?>
 
-                            <div class="blog__cardDescription">
-                                <p>
-                                    Интерьер ванной комнаты
-                                    Ванная комната – это место, где мы можем расслабиться, отдохнуть, привести себя в порядок.
-                                    В ней всегда должно быть чисто и уютно.
-                                </p>
-                                <p>
-                                    Дизайн ванной комнаты должен быть интересным и необычным, чтобы он привлекал внимание и вдохновлял на новые идеи.
-                                    Давайте рассмотрим, как можно оформить это помещение, какие стили выбрать, что необходимо сделать, чтобы ванная выглядела красиво и стильно.
-                                </p>
-                            </div>
-
-                            <div class="cardExpand">
-                                <div class="cardExpand__container">
-                                    <span class="circle"></span>
-                                    <span class="circle"></span>
-                                    <span class="circle"></span>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="blog__card" >
-                    <div class="blog__cardImage bgIpos" style="background-image: url('/Resources/img/blog/contentImages/blog1.webp')"></div>
-                    <div class="blog__cardBody">
-                        <div class="blog__shortInfo">
-                            <div class="blog__shortDate">
-                                27.09.2022
-                            </div>
-                            <span class="divider"></span>
-                            <div class="blog__shortCreator">
-                                Тайлер Дерден
-                            </div>
-                            <!--                ADD LIKES???                -->
-                        </div>
-
-                        <div class="blog__cardContent">
-                            <div class="blog__cardHeader title2">
-                                Интерьеры подвальных помещений
-                            </div>
-
-                            <div class="blog__cardDescription">
-                                <p>
-                                    В подвале можно сделать комнату, в которой будет только диван и телевизор, или комнату с диваном и телевизором, или с диваном, телевизором и еще с кроватью, и еще со столиком, и со стулом, и с креслом. Главное, чтобы было тепло.
-                                </p>
-                                <p>
-                                    Покрасить все в белый цвет. Подвесить повсюду люстры, поставить диваны, повесить телевизор, стол, стулья, купить шторы. Зайти в соседний магазин за продуктами и купить там все, что нужно.
-                                </p>
-                            </div>
-
-                            <div class="cardExpand">
-                                <div class="cardExpand__container">
-                                    <span class="circle"></span>
-                                    <span class="circle"></span>
-                                    <span class="circle"></span>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
             </div>
 
 
             <div class="blog__filters">
-                <div class="blog__searchBlock">
-                    <input type="text" placeholder="Искать ...">
-                    <input type="button" value="Поиск">
-                </div>
+                <form class="blog__searchBlock" action="news.php" method="get">
+                    <input name="queryFilter" type="text" value="<?= $queryFilter ?>" placeholder="Искать ...">
+                    <input type="submit" value="Поиск">
+                </form>
+                <form class="blog__searchBlock" action="news.php" method="get">
+                    <input type="submit" value="✖ Очистить поиск">
+                </form>
             </div>
         </div>
     </div>
