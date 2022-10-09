@@ -1,1 +1,2 @@
-cfg.txt
+*.txt
+/Helpers/config.php
