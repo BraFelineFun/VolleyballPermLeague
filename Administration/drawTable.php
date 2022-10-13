@@ -8,8 +8,6 @@ function drawTable(string $tableName){
 
         $htmlString = "";
 
-        $sortQuery = getSortQuery();
-
         try {
             $DB_arr = executeSQL("SELECT * from $tableName");
         } catch (Exception $e) {
@@ -44,7 +42,7 @@ function drawTable(string $tableName){
                 $htmlString .=  "<td>$td</td>";
 
             $htmlString .=  "<td class='iconBlock'>";
-            $htmlString .=  "    <a href='editRow.php?table=$tableName&id=$id&data= '>";
+            $htmlString .=  "    <a href='updateRow.php?table=$tableName&id=$id'>";
             $htmlString .=  "        <img src='../Resources/img/admin/edit.png' alt='edit row'>";
             $htmlString .=  "    </a>";
             $htmlString .=  "    <a href='deleteRow.php?table=$tableName&id=$id'>";
@@ -64,7 +62,7 @@ function drawTable(string $tableName){
         $htmlString .=  '<tr class="prices__row">';
         $htmlString .=  "
                 <td class='addRow ' colspan=$columnCount>
-                    <a href='#'>
+                    <a href='newRow.php?table=$tableName'>
                         <i>Добавить новую запись</i>
                         <img src='../Resources/img/admin/add.png' alt='add new row'>
                     </a>
