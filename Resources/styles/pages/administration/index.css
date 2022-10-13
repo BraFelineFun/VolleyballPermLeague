@@ -1,0 +1,22 @@
+body{
+    background-color: var(--cl_textLight);
+}
+.adminMain{
+    padding: 100px 20px;
+}
+.prices__row img{
+    width: 25px;
+}
+.prices__row .addRow{
+    margin-left: auto;
+    padding-right: 20px;
+}
+.iconBlock{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.iconBlock a, .addRow a {
+    display: block;
+    color: var(--cl_textPrimary);
+}

@@ -6,9 +6,9 @@ require_once 'config.php';
  * @throws Exception
  */
 function executeSQL(string $query){
-    global $hostname, $username, $password, $database; //импортируем внутрь функции из config
+    global $hostname, $username, $DB_pass, $database; //импортируем внутрь функции из config
 
-    $connection = mysqli_connect($hostname, $username, $password, $database);
+    $connection = mysqli_connect($hostname, $username, $DB_pass, $database);
 
 
     if ($connection === false) {
