@@ -1,5 +1,8 @@
 <?php
 require_once '../Helpers/DB.php';
+require_once '../Helpers/isLoggedIn.php';
+
+
 $id = $_GET['id'];
 $table = $_GET['table'];
 

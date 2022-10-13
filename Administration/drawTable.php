@@ -1,4 +1,5 @@
 <?php
+require_once '../Helpers/isLoggedIn.php';
 
 /** Функция генерирует HTML код. Возвращает в виде строки
  * @param string $tableName

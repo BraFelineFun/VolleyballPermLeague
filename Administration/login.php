@@ -16,6 +16,8 @@ if (isset($_POST['userData_login']) && isset($_POST['userData_password'])){
     $res = signIn($login, $password);
     if ($res === true)
     {
+        session_start();
+        $_SESSION['user'] = $login;
         header("Location:/Administration/index.php");
         die();
     }

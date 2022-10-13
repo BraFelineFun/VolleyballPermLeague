@@ -1,5 +1,4 @@
 <?php
-
 require_once '../Helpers/DB.php';
 
 function signIn($login, $password){

@@ -2,6 +2,9 @@
 require_once '../Helpers/DB.php';
 require_once '../Helpers/table_sort.php';
 require_once 'drawTable.php';
+require_once '../Helpers/isLoggedIn.php';
+
+
 ?>
 
 <!doctype html>
