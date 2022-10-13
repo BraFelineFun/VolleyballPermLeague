@@ -1,14 +1,11 @@
 <?php
+require_once '../Helpers/uniteGET_params.php';
 
+
+/** Функция для обработки ГЕТ запроса на сортировку - отдает строку которая подставляется в SQL запрос
+ * @return string
+ */
 function getSortQuery(){
-    /* Все варианты сортировки */
-    $sort_list = [
-        'descript'   => '`descript`',
-        'descript_desc'  => '`descript` DESC',
-        'value'  => '`value`',
-        'value_desc' => '`value` DESC'
-    ];
-
     if (!isset($_GET['sort']))
         return '';
 
@@ -21,9 +18,7 @@ function getSortQuery(){
 
 
 
-
-/* Функция вывода ссылок */
-/**
+/**Функция вывода ссылок
  * @param $title - text to show
  * @param $basic - name of column in table
  * @return string

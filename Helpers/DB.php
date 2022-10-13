@@ -1,5 +1,6 @@
 <?php
 require_once 'config.php';
+require_once 'str_includes.php';
 
 
 /**
@@ -19,9 +20,10 @@ function executeSQL(string $query){
 
     $DB_Data = mysqli_query($connection, $query);
 
-    if (!$DB_Data) {
+    if ($DB_Data === false) {
         throw new Exception("Произошла ошибка при выполнении запроса", -2);
     }
+    if (!str_includes($query, "SELECT")) return true;
 
     $DB_arr = mysqli_fetch_all($DB_Data, MYSQLI_ASSOC);
 

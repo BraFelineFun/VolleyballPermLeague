@@ -1,8 +1,24 @@
 body{
     background-color: var(--cl_textLight);
 }
+header{
+    background-color: var(--cl_bgc);
+}
 .adminMain{
     padding: 100px 20px;
+}
+
+
+.prices__table{
+    display: block;
+    overflow-x: auto;
+}
+.prices__table th{
+    white-space: nowrap;
+    padding: 0 20px;
+}
+.prices__row td {
+    min-width: 100px;
 }
 .prices__row img{
     width: 25px;

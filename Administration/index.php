@@ -1,5 +1,7 @@
 <?php
 require_once '../Helpers/DB.php';
+require_once '../Helpers/table_sort.php';
+require_once 'drawTable.php';
 ?>
 
 <!doctype html>
@@ -26,78 +28,36 @@ require_once '../Helpers/DB.php';
 </head>
 <body pageName ='<?= basename($_SERVER["SCRIPT_FILENAME"], ".php") ?>'>
 
+<?php
+
+$table = "users";
+
+if (isset($_GET['table'])){
+    $table = $_GET['table'];
+}
+
+?>
+
+<header>
+    <nav>
+        <a href="?table=users">users</a>
+        <a href="?table=news">news</a>
+        <a href="?table=prices">prices</a>
+    </nav>
+</header>
 
 <main class="adminMain containerNarrow">
-    <section class="section__admin1">
+    <section class="section__admin">
+
+        <div class="title-header">
+            <?= $table?>
+        </div>
+
+
         <?php
-        require_once '../Helpers/table_sort.php';
-
-        $sortQuery = getSortQuery();
-
-        try {
-            $DB_arr = executeSQL("SELECT * from prices $sortQuery");
-        } catch (Exception $e) {
-            $DB_arr = [];
-        }
+            $drawnTable = drawTable($table);
+            echo $drawnTable;
         ?>
-
-        <table class="prices__table">
-            <tr>
-                <th class="title2">
-                    <?= createLink('id', 'id') ?>
-                </th>
-                <th class="title2">
-                    <?= createLink('Описание', 'descript') ?>
-                </th>
-                <th class="title2">
-                    <?= createLink('Цена (₽)', 'value') ?>
-                </th>
-            </tr>
-
-            <?php
-
-            $columnCount = count($DB_arr[0]) + 1; //Свое значение + ячейка действия
-
-            foreach ($DB_arr as $row){
-                $id = $row['id'];
-                $descr = $row['descript'];
-                $price = $row['value'];
-
-
-
-                echo '<tr class="prices__row">';
-                echo "<td>$id</td>";
-                echo "<td>$descr</td>";
-                echo "<td>$price</td>";
-                echo "<td class='iconBlock'>
-                        <a href='#'>
-                            <img src='../Resources/img/admin/edit.png' alt='edit row'>
-                        </a>
-                        <a href='#'>
-                            <img src='../Resources/img/admin/delete.png' alt='delete row'>
-                        </a>
-                        
-                    </td>";
-
-
-            }
-            if (count($DB_arr) < 1){
-                echo '<tr class="prices__row">';
-                echo "<td> Отсутствуют данные </td>";
-                echo "</tr>";
-            }
-
-            echo '<tr class="prices__row">';
-            echo "<td class='addRow ' colspan=$columnCount>
-                        <a href='#'>
-                            <i>Добавить новую запись</i>
-                            <img src='../Resources/img/admin/add.png' alt='add new row'>
-                        </a>
-                    </td>";
-            echo "</tr>";
-            ?>
-
-        </table>
 
 
     </section>
