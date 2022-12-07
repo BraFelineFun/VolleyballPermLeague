@@ -4,6 +4,11 @@ require_once '../Helpers/table_sort.php';
 require_once 'drawTable.php';
 require_once '../Helpers/isLoggedIn.php';
 
+if ($_SESSION['userRole'] !== 'admin')
+    header("Location:/");
+
+require_once '../Helpers/config.php';
+
 
 ?>
 
@@ -33,19 +38,34 @@ require_once '../Helpers/isLoggedIn.php';
 
 <?php
 
-$table = "users";
+$tables = [];
+try {
+    $tables = executeSQL("SELECT table_name FROM information_schema.tables WHERE table_schema = '" . DATABASE ."';");
+    foreach ($tables as $index => $tb){
+        $tables[$index] = $tb['TABLE_NAME'];
+    }
 
-if (isset($_GET['table'])){
-    $table = $_GET['table'];
+
+} catch (Exception $e) {
+    die($e);
 }
 
+$table = $tables[0];
+
+if (isset($_GET['table']) && in_array($_GET['table'], $tables, true)){
+    $table = $_GET['table'];
+}
 ?>
 
 <header>
     <nav>
-        <a href="?table=users">users</a>
-        <a href="?table=news">news</a>
-        <a href="?table=prices">prices</a>
+        <?php foreach ($tables as $tableItem): ?>
+        <a href='?table=<?=$tableItem?>'>
+            <?=$tableItem?>
+        </a>
+        <span>|</span>
+        <?php endforeach;?>
+
     </nav>
 </header>
 
@@ -53,7 +73,7 @@ if (isset($_GET['table'])){
     <section class="section__admin">
 
         <div class="title-header">
-            <?= $table?>
+            <?= $table ?>
         </div>
 
 

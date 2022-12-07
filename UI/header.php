@@ -10,30 +10,31 @@ $currPage = basename($_SERVER["SCRIPT_FILENAME"]);
                 <?php $pageLink = 'index.php' ?>
                 <div class="header__link
                 <?php if($currPage === $pageLink) echo 'header__currentPage';?>
-            ">
+                ">
                     <a href="../index.php">Главная</a>
                 </div>
 
                 <?php $pageLink = 'news.php' ?>
                 <div class="header__link
                 <?php if($currPage === $pageLink) echo 'header__currentPage';?>
-            ">
+                ">
                     <a href="../news.php">Блог</a>
                 </div>
 
-                <?php $pageLink = 'prices.php' ?>
-                <div class="header__link
+                <?php $pageLink = 'prices.php' ?>                <div class="header__link
                 <?php if($currPage === $pageLink) echo 'header__currentPage';?>
-            ">
+                ">
                     <a href="../prices.php">Каталог</a>
                 </div>
 
                 <?php $pageLink = 'contacts.php' ?>
                 <div class="header__link
                 <?php if($currPage === $pageLink) echo 'header__currentPage';?>
-            ">
+                ">
                     <a href="../contacts.php">Контакты</a>
                 </div>
+
+
             </div>
         </div>
 
@@ -81,6 +82,13 @@ $currPage = basename($_SERVER["SCRIPT_FILENAME"]);
                 <?php if($currPage === $pageLink) echo 'header__currentPage';?>
             ">
                     <a href="../contacts.php">Контакты</a>
+                </div>
+
+                <?php $pageLink = 'LK.php' ?>
+                <div class="header__link
+                <?php if($currPage === $pageLink) echo 'header__currentPage';?>
+                ">
+                    <a href="/LK/">ЛК</a>
                 </div>
             </div>
 

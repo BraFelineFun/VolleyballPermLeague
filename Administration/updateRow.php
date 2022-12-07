@@ -1,4 +1,5 @@
 <?php
+//TODO: ПРОВЕРЯТЬ РОЛЬ и если не админ, то только по своим правам
 require_once '../Helpers/DB.php';
 require_once '../Helpers/isLoggedIn.php';
 
@@ -12,7 +13,8 @@ if (isset($_POST['newRow'])){
     $table = $_POST['table'];
     $id = $_POST['id'];
 
-    //UPDATE `prices` SET `id`='[value-1]',`descript`='[value-2]',`value`='[value-3]'
+    // Запрос примет следующий вид:
+    // UPDATE `prices` SET `id`='[value-1]',`descript`='[value-2]',`value`='[value-3]'
 
     //Начинаем формировать строку запроса (начало)
     $query = "UPDATE `$table` SET `id`= $id";
@@ -41,7 +43,10 @@ if (isset($_POST['newRow'])){
     }
 
     //Если все удачно - редирект
-    header("Location:/Administration/index.php?table=$table");
+    if ($_SESSION['userRole'] === 'admin')
+        header("Location:/Administration/index.php?table=$table");
+    else
+        header("Location:/LK/");
 }
 
 
@@ -93,9 +98,9 @@ try {
 
                 if ($colName !== 'id')
                     echo "
-                    <label for='$colName'>Введите $colName</label>
-                    <input id=\"$colName\" name=\"newRow[$colName]\" type=\"text\" value='$value'>
-                ";
+                        <label for='$colName'>Введите $colName</label>
+                        <input id=\"$colName\" name=\"newRow[$colName]\" type=\"text\" value='$value'>
+                    ";
             }
 
             ?>

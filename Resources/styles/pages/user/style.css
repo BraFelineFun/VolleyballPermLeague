@@ -1,0 +1,124 @@
+.mainPersonal {
+    background-color: var(--cl_bgc);
+}
+.personal__holder {
+    padding-top: 50vh;
+}
+
+.personal__infoContainer {
+    position: absolute;
+    top: 30vh;
+    left: 0;
+    right: 0;
+    bottom: -20vh;
+
+}
+
+.personal__info {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.personal {
+    position: relative;
+    width: 800px;
+    padding: 30px;
+    background-color: var(--cl_textLight);
+    -webkit-box-shadow: -6px 12px 46px 27px rgba(0, 38, 67, 0.2);
+    -moz-box-shadow: -6px 12px 46px 27px rgba(0, 38, 67, 0.2);
+    box-shadow: -6px 12px 46px 27px rgba(0, 38, 67, 0.2);
+
+    color: var(--cl_textPrimary);
+}
+.personal .titleText {
+    color: var(--cl_textPrimary);
+}
+.imageItem {
+    position: absolute;
+    padding: 20px 20px 0 0;
+    top: 0;
+    right: 0;
+    width: 150px;
+    height: 150px;
+    background-color: transparent;
+}
+.imageItem img {
+    display: block;
+    border-radius: 50%;
+    border: 2px solid var(--cl_accent);
+    object-fit: cover;
+    background-color: var(--cl_textLight);
+    width: 100%;
+}
+
+.field__group {
+    margin-top: 30px;
+}
+
+.field__description {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.field__label {
+    font-style: italic;
+}
+
+.sectionDivider {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/*===================*/
+/*======teamCard=====*/
+/*===================*/
+.teamCardContainer {
+    width: 100%;
+    background-color: var(--cl_bgc);
+    border-radius: 10px;
+}
+.teamCard__link {
+    display: block;
+}
+.teamCard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    color: var(--cl_textLight);
+}
+.teamCard__name {
+    text-transform: capitalize;
+}
+.teamCard__image {
+    margin-right: 30px;
+    border-radius: 50%;
+}
+.teamCard__image img {
+    height: 75px;
+}
+
+.refButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--cl_accent);
+    width: 250px;
+    height: 75px;
+}
+
+.field__groupUpdate {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+.field__updateField img {
+    width: 25px;
+    height: 25px;
+}
+
+.personal__additional {
+    margin-top: 30px;
+}

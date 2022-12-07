@@ -471,7 +471,7 @@ tr.prices__row:nth-child(2n) {
     justify-content: center;
     align-items: center;
 
-    min-height: 100vh;
+    min-height: 80vh;
 }
 .login__wrapper{
     padding: 20px;

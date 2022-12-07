@@ -37,7 +37,7 @@ function drawTable(string $tableName){
         foreach ($DB_arr as $row){
             $id = $row['id'];
 
-            $htmlString .=  '<tr class="prices__row">';
+            $htmlString .= '<tr class="prices__row">';
 
             foreach ($row as  $td)
                 $htmlString .=  "<td>$td</td>";

@@ -36,3 +36,7 @@ header{
     display: block;
     color: var(--cl_textPrimary);
 }
+
+nav span {
+    color: var(--cl_textLight);
+}

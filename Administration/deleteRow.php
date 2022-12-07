@@ -19,5 +19,6 @@ try {
 }
 
 if ($executed){
+
     header("Location:/Administration/index.php?table=$table");
 }

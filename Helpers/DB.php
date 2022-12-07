@@ -7,10 +7,8 @@ require_once 'str_includes.php';
  * @throws Exception
  */
 function executeSQL(string $query){
-    global $hostname, $username, $DB_pass, $database; //импортируем внутрь функции из config
 
-    $connection = mysqli_connect($hostname, $username, $DB_pass, $database);
-
+    $connection = mysqli_connect(HOSTNAME, USERNAME, PASSWORD, DATABASE);
 
     if ($connection === false) {
         throw new Exception("Ошибка: Невозможно подключиться к MySQL " . mysqli_connect_error(), -1);
