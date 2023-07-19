@@ -1,26 +1,42 @@
 <?php
-$currPage = "login.php";
+$currPage = "signUp.php";
 require_once 'workFiles/config.php';
-require_once 'Helpers/SingInHandler.php';
+require_once 'Helpers/DB.php';
 $errorMsg = "";
 
 if (isset($_POST['userData_login']) && isset($_POST['userData_password'])){
+    $errorMsg = "";
+
     $login = $_POST['userData_login'];
     $password = $_POST['userData_password'];
+    $password2 = $_POST['userData_2password'];
+    $name = $_POST['userData_name'];
+    if ($password !== $password2)
+        $errorMsg = "Не совпали пароли";
+
 
     unset($_POST['userData_login']);
     unset($_POST['userData_password']);
+    unset($_POST['userData_2password']);
+    unset($_POST['userData_name']);
 
-    $res = SighInHandler::signIn($login, $password);
-    if ($res["success"] === true) {
+    DB::getAdapter();
+    $query = "INSERT INTO `USER`(`name`, `email`, `password`, `image`, `role`) VALUES (?,?,?,?,?)";
+    try {
+        DB::executeStatement($query, [$name, $login, $password, "", "guest"]);
+        $id = DB::executeSQL("SELECT id FROM USER ORDER BY id DESC LIMIT 1; ")[0]["id"];
+    }
+    catch (Exception $exception) {
+        $errorMsg = "Ошибка при создании, повторите попытку позднее";
+    }
+
+    if ($errorMsg === "") {
         session_start();
-        $_SESSION['userId'] = $res["result"]['id'];
-        $_SESSION['userRole'] = $res["result"]['role'];
+        $_SESSION['userId'] = $id;
+        $_SESSION['userRole'] = 'guest';
         header("Location:/LK/", true, 302);
         die();
     }
-
-    $errorMsg = $res["result"];
 }
 
 ?>
@@ -44,7 +60,7 @@ if (isset($_POST['userData_login']) && isset($_POST['userData_password'])){
 
     <script defer src="Resources/js/index.js"></script>
 
-    <title> Вход в ЛК | Volley. </title>
+    <title> Создание учетной записи | Volley. </title>
 </head>
 <body pageName ='<?= $currPage ?>'>
 
@@ -55,7 +71,7 @@ require_once __ROOT__ . 'UI/header.php';
 <main class="login containerNarrow">
     <div class="login__wrapper">
         <div class="title2">
-            Войти в личный кабинет
+            Создание пользователя
         </div>
         <hr>
 
@@ -67,21 +83,26 @@ require_once __ROOT__ . 'UI/header.php';
             </div>
             ";
         ?>
-        <form class="login__form" action="login.php" method="post">
+        <form class="login__form" action="signUp.php" method="post">
             <label for="login">Введите логин (email):</label>
             <input id="login" name="userData_login" type="text">
+            <label for="name">Введите имя:</label>
+            <input id="name" name="userData_name" type="text">
             <label for="password">Введите пароль:</label>
             <input id="password" name="userData_password" type="password">
-            <input name="submit" type="submit" value="Войти">
+            <label for="2password">Введите пароль повторно:</label>
+            <input id="2password" name="userData_2password" type="password">
+
+            <input name="submit" type="submit" value="Создать">
         </form>
 
         <hr>
         <div class="changePage">
             <p>
-                Еще нет учетной записи?
+                Уже есть учетная запись?
             </p>
-            <a href="signUp.php">
-                Создать новую учетную запись
+            <a href="login.php">
+                Войдите в аккаунт
             </a>
         </div>
     </div>

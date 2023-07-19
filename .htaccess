@@ -1,0 +1,8 @@
+Options All -ExecCGI -Indexes -Includes
+
+DirectoryIndex index.php
+<IfModule mod_setenvif.c>
+	SetEnv TZ Europe/Moscow
+</IfModule>
+ServerSignature Off
+AddDefaultCharset UTF-8

@@ -4,10 +4,10 @@
 
         <div class="footer__item footer__info">
             <div class="footer__title title-header">
-                Interior<span class="accent">.</span>
+                Volley<span class="accent">.</span>
             </div>
             <div class="footer__description title-preText">
-                Профессиональные услуги по созданию интерьеров любых помещений
+                Любительская воллейбольная лига Перми
             </div>
 
             <div class="footer__mainContacts">
@@ -17,7 +17,7 @@
                     </a>
                 </div>
                 <div class="contacts__email">
-                    <a href="mailto:interior@design.com?subject=Interior">interior@design.com</a>
+                    <a href="mailto:interior@design.com?subject=Interior">Volley@ball.com</a>
                 </div>
             </div>
         </div>

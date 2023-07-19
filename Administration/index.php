@@ -1,15 +1,13 @@
 <?php
+require_once '../workFiles/config.php';
 require_once '../Helpers/DB.php';
 require_once '../Helpers/table_sort.php';
 require_once 'drawTable.php';
 require_once '../Helpers/isLoggedIn.php';
+require_once '../UI/fullErrorDisplay.php';
 
 if ($_SESSION['userRole'] !== 'admin')
     header("Location:/");
-
-require_once '../Helpers/config.php';
-
-
 ?>
 
 <!doctype html>
@@ -32,7 +30,7 @@ require_once '../Helpers/config.php';
 
     <script defer src="../Resources/js/index.js"></script>
 
-    <title> Администрирование | Interior. </title>
+    <title> Администрирование | Volley. </title>
 </head>
 <body pageName ='<?= basename($_SERVER["SCRIPT_FILENAME"], ".php") ?>'>
 
@@ -40,16 +38,17 @@ require_once '../Helpers/config.php';
 
 $tables = [];
 try {
-    $tables = executeSQL("SELECT table_name FROM information_schema.tables WHERE table_schema = '" . DATABASE ."';");
+    DB::getAdapter();
+    $db_config = include(__ROOT__ . 'workFiles/config.php');
+    $tables = DB::executeSQL("SELECT table_name FROM information_schema.tables WHERE table_schema = '" . $db_config['database']['database'] ."';");
     foreach ($tables as $index => $tb){
         $tables[$index] = $tb['TABLE_NAME'];
     }
-
-
-} catch (Exception $e) {
-    die($e);
 }
-
+catch (Exception $e) {
+    echo fullDisplayError($e, "Обращение к базе данных");
+    die();
+}
 $table = $tables[0];
 
 if (isset($_GET['table']) && in_array($_GET['table'], $tables, true)){

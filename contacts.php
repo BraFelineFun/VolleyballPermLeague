@@ -1,3 +1,8 @@
+<?php
+require_once 'workFiles/config.php';
+$currPage = "contacts.php";
+?>
+
 <!doctype html>
 <html lang="ru">
 <head>
@@ -19,9 +24,9 @@
 
     <script defer src="Resources/js/index.js"></script>
 
-    <title> Контакты | Interior. </title>
+    <title> Контакты | Volley. </title>
 </head>
-<body pageName ='<?= basename($_SERVER["SCRIPT_FILENAME"], ".php") ?>'>
+<body pageName ='<?= $currPage ?>'>
 
 <?php
 require_once 'UI/header.php';
@@ -36,8 +41,11 @@ require_once 'UI/header.php';
                 <input type="button" value="Показать карту">
             </div>
         </div>
-        <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A1dad0bd80ae85236edc93cdaa3480ff6e2272691b621e97fa485b0e41afafaf9&amp;source=constructor" width="100%" height="400" frameborder="0">
-
+        <iframe
+                src="https://yandex.ru/map-widget/v1/?um=constructor%3A1dad0bd80ae85236edc93cdaa3480ff6e2272691b621e97fa485b0e41afafaf9&amp;source=constructor"
+                width="100%"
+                height="400"
+                frameborder="0">
         </iframe>
     </div>
 
@@ -74,7 +82,7 @@ require_once 'UI/header.php';
                             </a>
                         </div>
                         <div class="contacts__email">
-                            <a href="mailto:interior@design.com?subject=Interior">interior@design.com</a>
+                            <a href="mailto:interior@design.com?subject=Interior">volley@ball.com</a>
                         </div>
                     </div>
                 </div>

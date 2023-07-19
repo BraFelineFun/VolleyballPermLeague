@@ -1,0 +1,32 @@
+.error {
+    max-width: 800px;
+    padding: 20px;
+}
+
+.error h1, .error h2 {
+    color: var(--cl_accent);
+}
+
+.userErrorContainer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: var(--cl_bgcDarker);
+    color: var(--cl_textLight);
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.backToMain {
+    margin-top: 30px;
+}
+
+.backToMain_link {
+    max-width: 150px;
+    background-color: var(--cl_textLight);
+    padding: 10px;
+    font-weight: bold;
+}

@@ -10,7 +10,8 @@ function drawTable(string $tableName){
         $htmlString = "";
 
         try {
-            $DB_arr = executeSQL("SELECT * from $tableName");
+            DB::getAdapter();
+            $DB_arr = DB::executeSQL("SELECT * from $tableName");
         } catch (Exception $e) {
             return (string)$e;
         }

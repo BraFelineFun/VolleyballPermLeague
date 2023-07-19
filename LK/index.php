@@ -1,10 +1,14 @@
 <?php
+$currPage = "/LK";
+require_once '../workFiles/config.php';
 require_once '../Helpers/isLoggedIn.php';
-
-$userId = $_SESSION['userId'];
-
+if (isset($_GET['exit']) && $_GET['exit'] == 1) {
+    unset($_SESSION['userId']);
+    header("Location:/login.php", true, 302);
+}
 require_once '../Helpers/DB.php';
 require_once '../LK/drawFieldGroup.php';
+$userId = $_SESSION['userId'];
 ?>
 
 <!doctype html>
@@ -20,6 +24,7 @@ require_once '../LK/drawFieldGroup.php';
     <link rel="stylesheet" href="../Resources/styles/headerStyle.css">
     <link rel="stylesheet" href="../Resources/styles/footer.css">
     <link rel="stylesheet" href="../Resources/styles/pages/user/style.css">
+    <link rel="stylesheet" href="../Resources/styles/pages/teams.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,20 +32,17 @@ require_once '../LK/drawFieldGroup.php';
 
     <script defer src="../Resources/js/index.js"></script>
 
-    <title> Личный кабинет | Interior. </title>
+    <title> Личный кабинет | Volley. </title>
 </head>
-<body pageName ='<?= basename($_SERVER["SCRIPT_FILENAME"], ".php") ?>'>
+<body pageName ='<?= $currPage ?>'>
 
 <?php
-
-$query = "SELECT * from `USER` where id = $userId";
+DB::getAdapter();
+$query = "SELECT * from `USER` where id = ?";
 $userData = [];
-try {
-    $userData = executeSQL($query)[0];
-} catch (Exception $e) {
-    echo $e;
-}
+$userData = DB::executeStatement($query, [$userId])[0];
 unset($userData['id']);
+unset($userData['password']);
 
 $userImage = "";
 if (isset($userData['image'])) {
@@ -49,18 +51,21 @@ if (isset($userData['image'])) {
 }
 
 if ($userData['role'] === 'leader'){
-    $query = "select TEAM.image, TEAM.name from TEAM JOIN PLAYER ON PLAYER.key_team = TEAM.id JOIN USER ON USER.id = PLAYER.key_user WHERE USER.id = $userId";
-    $teamData = executeSQL($query)[0];
+    $query = "SELECT T.id as id, T.name as name, T.image as image FROM `TEAM` as T LEFT JOIN `USER` as U ON T.key_leader=U.id WHERE U.id=?";
+    $teamData = DB::executeStatement($query, [$userId])[0];
 }
 if ($userData['role'] === 'player') {
-    $query = "select P.height, P.weight, P.key_team from USER join PLAYER P on USER.id = P.key_user where USER.id = $userId";
-    $playerData = executeSQL($query)[0];
-    if ($teamId = $playerData['key_team']) {
-        $query = "select TEAM.name, TEAM.image from TEAM where id = $teamId";
-        $teamData = executeSQL($query)[0];
+    $query = "    SELECT T2P.key_team as team_id, P.weight as weight, P.height as height FROM `TEAM_2_PLAYER` as T2P 
+                    LEFT JOIN `PLAYER` as P ON P.id=T2P.key_player 
+                    WHERE T2P.`key_player` = 3 AND T2P.`status`='approved' ";
+    $playerData = DB::executeStatement($query, [$userId])[0];
+
+    if ($teamId = $playerData['team_id']) {
+        unset($playerData["team_id"]);
+        $query = "select TEAM.id, TEAM.name, TEAM.image from TEAM where id = $teamId";
+        $teamData = DB::executeSQL($query)[0];
     }
 }
-
 
 require_once '../UI/header.php';
 ?>
@@ -83,7 +88,9 @@ require_once '../UI/header.php';
                     </div>
                     <hr>
                     <div class="sectionDivider">
-                        <div class='personal__data field'>
+                        <div class='personal__data'>
+
+
                             <?= drawFieldGroup("Пользователь", $userData, 'USER', $userId) ?>
 
                             <?= isset($playerData)? drawFieldGroup("Игрок", $playerData): ""; ?>
@@ -95,22 +102,23 @@ require_once '../UI/header.php';
                                     require_once 'drawTeamCard.php';
                                 ?>
 
-                                <?php
-                                if ($userData['role'] === 'admin')
-                                    echo "
-                                        <div class='refButton'>
-                                            <a href='/Administration/'>Панель администратора</a>
-                                        </div>
-                                    ";
-                                ?>
+                                <?php if ($userData['role'] === 'admin'): ?>
+                                    <div class='refButton'>
+                                        <a href='/Administration/'>Панель администратора</a>
+                                    </div>
+                                <?php endif; ?>
 
                             </div>
                         </div>
 
 
-
-                        <div class="statisticItem">
-                            Когда нибудь будет статистика
+                        <?php if ($userData['role'] === 'leader'): ?>
+                            <?php require_once 'drawApplications.php' ?>
+                        <?php endif; ?>
+                    </div>
+                    <div class="actionButton__container">
+                        <div class='refButton'>
+                            <a href='/LK?exit=1'>Выйти из аккаунта</a>
                         </div>
                     </div>
                 </div>

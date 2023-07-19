@@ -1,3 +1,9 @@
+<?php
+require_once 'workFiles/config.php';
+$currPage = "index.php";
+?>
+
+
 <!doctype html>
 <html lang="ru">
 <head>
@@ -19,7 +25,7 @@
 
     <title> Главная | Interior. </title>
 </head>
-<body pageName ='<?= basename($_SERVER["SCRIPT_FILENAME"], ".php") ?>'>
+<body pageName ='<?= $currPage ?>'>
 
 <?php
 require_once 'UI/header.php';
@@ -27,12 +33,13 @@ require_once 'UI/header.php';
 
 <main>
 
-    <section class="section__1" style="background-image: url('/Resources/img/content/bgc1.webp')">
+    <section class="section__1" style="background-image: url('/Resources/img/content/bgc1.jpg')">
 
         <div class="section__filter">
             <div class="section__absoluteTitle">
                 <h2><i>ДОБРО ПОЖАЛОВАТЬ</i></h2>
-                <h1>СОВРЕМЕННЫЙ ДИЗАЙН - INTERIOR<span class="accent">.</span></h1>
+                <h1>VOLLEY<span class="accent">.</span></h1>
+                <h2><i>любительский волейбол</i></h2>
             </div>
         </div>
 
@@ -40,49 +47,7 @@ require_once 'UI/header.php';
 
 
     <section class="section__2 container" >
-        <div class="benefits">
-            <div class="benefits__item">
-                <div class="benifits__img">
-                    <img src="/Resources/img/content/section2_benifits.png" alt="benefits">
-                </div>
-                <div class="benifits__text">
-                    <div class="benifits__title"> <h3><span class="accent">О</span>пыт</h3></div>
-                    <div class="benifits__descr">
-                        <i>
-                            В создании интерьеров для наших клиентов
-                            <br>
-                            составляет более 5 лет.
-                        </i>
-                    </div>
-                </div>
-            </div>
-            <div class="benefits__item">
-                <div class="benifits__img">
-                    <img src="/Resources/img/content/section2_benifits.png" alt="benefits">
-                </div>
-                <div class="benifits__text">
-                    <div class="benifits__title"> <h3><span class="accent">Р</span>еализовано</h3></div>
-                    <div class="benifits__descr">
-                        <i>
-                            более 100 проектов по всей России
-                        </i>
-                    </div>
-                </div>
-            </div>
-            <div class="benefits__item">
-                <div class="benifits__img">
-                    <img src="/Resources/img/content/section2_benifits.png" alt="benefits">
-                </div>
-                <div class="benifits__text">
-                    <div class="benifits__title"> <h3><span class="accent">Н</span>алажены</h3></div>
-                    <div class="benifits__descr">
-                        <i>
-                            контакты с поставщиками внутри России и за рубежом
-                        </i>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </section>
 
 
@@ -92,23 +57,28 @@ require_once 'UI/header.php';
             <div class="professionals">
                 <div class="professionals__textBox">
                     <div class="professionals__preText title-preText">
-                        Наши профессиональные услуги
+                        Пермская любительская волейбольная лига
                     </div>
                     <div class="professionals__title title-header">
-                        <h2>Мы создаем современные интерьеры первого класса<span class="accent">.</span></h2>
+                        <h2>Не только спорт, но и сообщество<span class="accent">.</span></h2>
                     </div>
                     <div class="professionals__description">
                         <p>
-                            Чтобы начать работу с нами, вам не нужны специальные знания о стилях, правилах эргономики, материалах. Мы учтем ваши пожелания,
-                            и все наши знания будут применены для создания идеального пространства для вас. А в плоскости чертежа мы четко отразим все наши идеи для более точной реализации нашего совместного проекта.
+                            Мы, команда Пермской любительской волейбольной лиги,
+                            стремимся к созданию уникальной и вдохновляющей среды
+                            для всех любителей волейбола в Перми. Наша миссия заключается
+                            в том, чтобы привлекать людей всех возрастов и уровней подготовки,
+                            объединяя их вокруг общей страсти к этому увлекательному
                         </p>
                         <p>
-                            Мы работаем, чтобы вам хотелось возвращаться домой, ведь каждая деталь в нем будет о Вас и для Вас.
+                            Мы верим, что волейбол - это не просто игра, а средство
+                            для создания крепких дружеских связей, развития командного духа и построения
+                            здорового образа жизни.
                         </p>
                     </div>
                 </div>
-                <a href="news.php" class="professionals__more">
-                    Узнать о нас больше
+                <a href="/LK" class="professionals__more">
+                    Присоединиться к сообществу!
                 </a>
             </div>
         </div>
@@ -116,34 +86,34 @@ require_once 'UI/header.php';
 
     <section class="section__4">
         <div class="sectionTitle">
-            <div class="title-preText">Наши профессиональные услуги</div>
-            <div class="sectionTitle title-header">Захватывающие интерьеры</div>
+            <div class="title-preText">Пермская любительская волейбольная лига</div>
+            <div class="sectionTitle title-header">Захватывающее приключение</div>
         </div>
         <div class="cards container">
-            <div class="card" style="background-image: url('./Resources/img/content/narrowC1.webp')">
+            <div class="card" style="background-image: url('./Resources/img/content/narrowC1.jpg')">
                 <div class="card__label">
-                    <div class="card__title title2">Актуальность</div>
+                    <div class="card__title title2">Команды</div>
                     <div class="card__text">
-                        <p>Актуальные дизайнерские приемы для зонирования помещений помогают </p>
-                        <p>не только решить проблему недостатка площади, но и создать эргономичный, функциональный интерьер в любой квартире.</p>
+                        <p>Вступайте в команду и станьте частью дружного сообщества. </p>
+                        <p>Или напротив, создайте свое и найдите свою вторую семью.</p>
                     </div>
                 </div>
             </div>
-            <div class="card" style="background-image: url('./Resources/img/content/narrowC2.webp')">
+            <div class="card" style="background-image: url('./Resources/img/content/narrowC2.jpg')">
                 <div class="card__label">
-                    <div class="card__title title2">Современные подходы</div>
+                    <div class="card__title title2">Игроки</div>
                     <div class="card__text">
-                        <p>Зонирование пространства современной квартиры –</p>
-                        <p> один из ключевых моментов в разработке дизайн-проекта</p>
+                        <p> Наша волейбольная лига – это множество людей</p>
+                        <p> Но мы всегда рады новым членам нашей дружной команды</p>
                     </div>
                 </div>
             </div>
-            <div class="card" style="background-image: url('./Resources/img/content/narrowC3.webp')">
+            <div class="card" style="background-image: url('./Resources/img/content/narrowC3.jpg')">
                 <div class="card__label">
-                    <div class="card__title title2">Уникальность</div>
+                    <div class="card__title title2">Статистика</div>
                     <div class="card__text">
-                        <p>В дизайн-проектах мы отражаем уникальность каждого человека, </p>
-                        <p>как личности, для которого проектируем будущее пространство.</p>
+                        <p> Соревнуйтесь с другими игроками  </p>
+                        <p> Делитесь своими результатами</p>
                     </div>
                 </div>
             </div>

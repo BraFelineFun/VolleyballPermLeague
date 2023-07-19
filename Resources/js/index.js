@@ -120,11 +120,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
             break;
         }
 
-        case 'contacts':
+        case 'contacts.php':
             delayedMapShow();
             break;
 
-        case 'index':{
+        case 'index.php':{
             const setFocusHandler = setFocus('.cards');
             setFocusHandler();
             window.addEventListener('orientationchange', setFocusHandler);

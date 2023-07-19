@@ -1,37 +1,50 @@
-body{
+body {
     background-color: var(--cl_textLight);
 }
-header{
+
+header {
+    display: block;
     background-color: var(--cl_bgc);
 }
-.adminMain{
+
+.adminMain {
     padding: 100px 20px;
 }
 
 
-.prices__table{
+.prices__table {
     display: block;
     overflow-x: auto;
 }
-.prices__table th{
+
+.prices__table th {
     white-space: nowrap;
     padding: 0 20px;
 }
+
+.prices__table tr:last-of-type {
+    border-bottom: 1px solid var(--cl_textPrimary);
+}
+
 .prices__row td {
     min-width: 100px;
 }
-.prices__row img{
+
+.prices__row img {
     width: 25px;
 }
-.prices__row .addRow{
+
+.prices__row .addRow {
     margin-left: auto;
     padding-right: 20px;
 }
-.iconBlock{
+
+.iconBlock {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
+
 .iconBlock a, .addRow a {
     display: block;
     color: var(--cl_textPrimary);

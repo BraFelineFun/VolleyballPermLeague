@@ -1,30 +1,98 @@
 <?php
-require_once 'config.php';
-require_once 'str_includes.php';
 
+require_once __ROOT__ . 'Helpers/str_includes.php';
 
-/**
- * @throws Exception
- */
-function executeSQL(string $query){
+class DB
+{
+    private static $adapter;
 
-    $connection = mysqli_connect(HOSTNAME, USERNAME, PASSWORD, DATABASE);
+    public static function getAdapter()
+    {
+        if (is_null(self::$adapter)) {
+            mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+            $db_config = include(__ROOT__ . 'workFiles/config.php');
+            $db_config = $db_config["database"];
 
-    if ($connection === false) {
-        throw new Exception("Ошибка: Невозможно подключиться к MySQL " . mysqli_connect_error(), -1);
+            try {
+                self::$adapter = new mysqli($db_config["hostname"], $db_config["username"], $db_config["pass"], $db_config["database"], $db_config["port"]);
+            }
+            catch (Exception $exception) {
+                return ["success" => false, "result" => $exception->getMessage()];
+            }
+
+            self::$adapter->set_charset($db_config["charset"]);
+            self::$adapter->options(MYSQLI_OPT_INT_AND_FLOAT_NATIVE, 1);
+        }
+        return ["success" => true, "result" => self::$adapter];
     }
-    mysqli_set_charset($connection, "utf8");
 
+    /**
+     * @param string $sql - строка запроса, обязательно содержащая знаки вопроса
+     * @param array $params - массив вставляемых параметров, длины равной количеству знаков вопроса
+     * @param string $types
+     * @return bool | array
+     * @throws Exception
+     */
+    public static function executeStatement(string $sql, array $params, string $types = ""){
+        if (is_null(self::$adapter)){
+            throw new Exception("Не найдено подключение");
+        }
+        $types = $types ?: str_repeat("s", count($params));
 
-    $DB_Data = mysqli_query($connection, $query);
+        $stmt= self::$adapter->prepare($sql);
+        $stmt->bind_param($types, ...$params);
+        $stmt->execute();
+        if (!str_includes($sql, "SELECT")) return true;
+        try {
+            $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        }
+        catch (Exception $exception){
+            echo $exception->getMessage();
+        }
 
-    if ($DB_Data === false) {
-        throw new Exception("Произошла ошибка при выполнении запроса", -2);
+        return $result;
     }
-    if (!str_includes($query, "SELECT")) return true;
 
-    $DB_arr = mysqli_fetch_all($DB_Data, MYSQLI_ASSOC);
+    public static function executeSQL(string $sql) {
+        if (!is_string($sql) || $sql === ""){
+            throw new Exception("Ожидалась строка. Получен другой тип или пустая строка");
+        }
+        if (is_null(self::$adapter)){
+            throw new Exception("Не найдено подключение");
+        }
 
+        $queryResult = self::$adapter->query($sql);
 
-    return $DB_arr;
+        if (!str_includes($sql, "SELECT")) return $queryResult;
+
+        $result = $queryResult->fetch_all(MYSQLI_ASSOC);
+        return $result;
+    }
+
+    public static function executeMultipleSql(string $sql) {
+        if (!is_string($sql) || $sql === ""){
+            throw new Exception("Ожидалась строка. Получен другой тип или пустая строка");
+        }
+        if (is_null(self::$adapter)){
+            throw new Exception("Не найдено подключение");
+        }
+
+        $result = [];
+        self::$adapter->multi_query($sql);
+
+        do {
+            /* сохранить набор результатов в PHP */
+            if ($rawResult = self::$adapter->store_result()) {
+                while ($row = $rawResult->fetch_row()) {
+                    $result[] = $row;
+                }
+            }
+        } while (self::$adapter->next_result());
+
+        return $result;
+    }
+
+    public static function getLastInsertId() {
+        return self::$adapter->insert_id;
+    }
 }
